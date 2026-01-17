@@ -1,73 +1,57 @@
-import java.util.Scanner;
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 
-public class Hello {
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Java JSP Output</title>
+</head>
+<body>
 
-    // Method to add two numbers
-    static int add(int a, int b) {
-        return a + b;
+<h1>Java Program Output (JSP)</h1>
+<hr/>
+
+<%
+    // Addition
+    int a = 10;
+    int b = 20;
+    int sum = a + b;
+
+    // Even or Odd
+    int number = 7;
+    String evenOdd = (number % 2 == 0) ? "Even" : "Odd";
+
+    // Factorial
+    int n = 5;
+    long fact = 1;
+    for (int i = 1; i <= n; i++) {
+        fact *= i;
     }
 
-    // Method to check even or odd
-    static String evenOrOdd(int number) {
-        if (number % 2 == 0) {
-            return "Even";
-        } else {
-            return "Odd";
-        }
+    // Print numbers
+    int limit = 10;
+%>
+
+<p><b>Addition:</b> <%= a %> + <%= b %> = <%= sum %></p>
+
+<p><b>Even / Odd:</b> <%= number %> is <%= evenOdd %></p>
+
+<p><b>Factorial:</b> <%= n %>! = <%= fact %></p>
+
+<p><b>Numbers from 1 to <%= limit %>:</b></p>
+
+<%
+    for (int i = 1; i <= limit; i++) {
+        out.print(i + " ");
     }
+%>
 
-    // Method to find factorial
-    static long factorial(int n) {
-        long result = 1;
-        for (int i = 1; i <= n; i++) {
-            result *= i;
-        }
-        return result;
-    }
+<hr/>
+<h3>Deployment Status</h3>
+<p>✔ Maven WAR build successful</p>
+<p>✔ Jenkins deployed on Tomcat 9</p>
+<p>✔ JSP executed correctly</p>
 
-    // Method to print numbers
-    static void printNumbers(int limit) {
-        System.out.println("Numbers from 1 to " + limit + ":");
-        for (int i = 1; i <= limit; i++) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-    }
-
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("=== Simple Java Big Program ===");
-
-        // Addition
-        System.out.print("Enter first number: ");
-        int a = sc.nextInt();
-
-        System.out.print("Enter second number: ");
-        int b = sc.nextInt();
-
-        int sum = add(a, b);
-        System.out.println("Sum = " + sum);
-
-        // Even or Odd
-        System.out.print("Enter a number to check Even/Odd: ");
-        int num = sc.nextInt();
-        System.out.println(num + " is " + evenOrOdd(num));
-
-        // Factorial
-        System.out.print("Enter a number for factorial: ");
-        int factNum = sc.nextInt();
-        System.out.println("Factorial of " + factNum + " = " + factorial(factNum));
-
-        // Print numbers
-        System.out.print("Enter limit to print numbers: ");
-        int limit = sc.nextInt();
-        printNumbers(limit);
-
-        System.out.println("=== Program Finished ===");
-
-        sc.close();
-    }
-}
+</body>
+</html>
 
